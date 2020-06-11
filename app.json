@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "zimble",
+    "slug": "zimble",
     "platforms": [
       "ios",
       "android",
@@ -20,9 +20,14 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
+    ], "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.winnerdevs.zimble",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.winnerdevs.zimble",
+      "versionCode": 1
     }
   }
 }
