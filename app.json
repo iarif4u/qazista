@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "zimble",
-    "slug": "zimble",
+    "name": "Qazista",
+    "slug": "qazista",
     "platforms": [
       "ios",
       "android",
@@ -22,11 +22,11 @@
       "**/*"
     ], "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.winnerdevs.zimble",
+      "bundleIdentifier": "com.winnerdevs.qazista",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.winnerdevs.zimble",
+      "package": "com.winnerdevs.qazista",
       "versionCode": 1
     }
   }

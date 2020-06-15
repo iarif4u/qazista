@@ -17,17 +17,29 @@ import {
     Text,
     StatusBar,
     Modal,
+    Linking
 } from 'react-native';
+import {
+    useFonts,
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
+import { AppLoading } from 'expo';
 import axios from "axios";
 import {
     LearnMoreLinks,
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import Header from './src/Header';
-import {APPS_COLOR, authHeader, POST_URL, ROW_WIDTH} from './src/Const';
+import {
+    Karla_400Regular,
+    Karla_400Regular_Italic,
+    Karla_700Bold,
+    Karla_700Bold_Italic,
+} from '@expo-google-fonts/karla';
+import {APPS_COLOR, authHeader, DISPLAY_WIDTH, POST_URL, URL, ROW_WIDTH, LOGO} from './src/Const';
 import Card from './src/Card';
 import Loading from './src/Loading';
-import http from './src/http';
+import Image from "react-native-scalable-image";
 
 const App: () => React$Node = () => {
     const [loading, setLoading] = useState(false);
@@ -36,6 +48,14 @@ const App: () => React$Node = () => {
     const [email, setEmail] = useState(null);
     const [country, setCountry] = useState(null);
     const [phone, setPhone] = useState(null);
+    let [fontsLoaded] = useFonts({
+        Poppins_400Regular,
+        Poppins_600SemiBold,
+        Karla_400Regular
+    });
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    }else{
     return (
         <>
             <StatusBar backgroundColor={APPS_COLOR} barStyle="dark-content"/>
@@ -137,21 +157,41 @@ const App: () => React$Node = () => {
                         </TouchableOpacity>
                     </View>
                 </Modal>
-                <Header/>
+                <Image
+                    width={ROW_WIDTH/1.5}
+                    source={LOGO}
+                />
+                <Text style={{fontFamily: 'Poppins_600SemiBold',color:"#fff",fontSize:24,marginTop:15,marginBottom:0,textAlign:'center'}}>Coming Soon</Text>
+                <Text style={{fontFamily: 'Karla_400Regular',color:"#fff",fontSize:14,textAlign:'center'}}>Launching December 2020</Text>
                 <Card/>
+                <Text style={{fontFamily: 'Poppins_600SemiBold',color:"#fff",fontSize:16,textAlign:'center'}}>Sign up today for</Text>
+                <Text style={{fontFamily: 'Poppins_600SemiBold',color:"#fff",fontSize:16,textAlign:'center'}}>early access</Text>
                 <TouchableOpacity
-                    style={{padding: 10,paddingLeft:30,paddingRight: 30, backgroundColor: '#fff', margin: 20, borderRadius: 10}}
+                    style={{ backgroundColor: '#fff', margin: 20, borderRadius: 10}}
                     onPress={() => {
                         setModal(true);
                     }}
                 >
-                    <Text>Sign Up</Text>
+                    <Text style={{color:"#000",padding: 5,paddingLeft:10,paddingRight:10,fontSize:12,fontFamily: 'Poppins_600SemiBold'}}>Sign Up</Text>
                 </TouchableOpacity>
-                <Text style={{bottom: 10, position: 'absolute'}}>www.zimble.co.uk</Text>
+                <TouchableOpacity
+                    onPress={()=>{
+                        Linking.canOpenURL(URL).then(supported => {
+                            if (supported) {
+                                Linking.openURL(URL);
+                            } else {
+                                ToastAndroid.show("Browser can't open this url", ToastAndroid.SHORT);
+                            }
+                        });
+                    }}
+                    style={{bottom: 40, position: 'absolute',width:DISPLAY_WIDTH,backgroundColor:"#666"}}>
+                    <Text style={{textTransform:"uppercase",color:"#fff",textAlign: "center",fontSize:16,fontFamily: 'Poppins_600SemiBold',padding:3}}>www.qazista.com</Text>
+                </TouchableOpacity>
                 <Loading loading={loading}/>
             </SafeAreaView>
         </>
     );
+    }
 };
 
 const styles = StyleSheet.create({

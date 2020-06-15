@@ -1,19 +1,18 @@
 import React from 'react';
 import {Text,View} from 'react-native';
-import {CARD_IMG,ROW_WIDTH, DISPLAY_WIDTH, LOGO} from './Const';
+import {CARD_IMG, ROW_WIDTH, DISPLAY_WIDTH, LOGO, CARD_WIDTH} from './Const';
 import Image from 'react-native-scalable-image';
-const Card = (): Node => (
+const Card = ()=> (
     <View>
         <Image
-            width={ROW_WIDTH}
+            width={CARD_WIDTH}
             style={{
-                padding:10,
+                margin:20,
+                marginLeft:'15%',
                 alignSelf:"center"
             }}
             source={CARD_IMG}
         />
-        <Text style={{fontWeight:"bold",color:"#fff",fontSize:16,textAlign:'center'}}>Sing up tody for</Text>
-        <Text style={{fontWeight:"bold",color:"#fff",fontSize:16,textAlign:'center'}}>early access</Text>
     </View>
 
 );
